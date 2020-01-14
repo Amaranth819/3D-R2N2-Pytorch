@@ -143,7 +143,7 @@ class BN_FCConv3D(nn.Module):
 		x = self.fc(x).view(-1, self.deconv_filter, self.n_gru_vox, self.n_gru_vox, self.n_gru_vox)
 		bn_x = self.bn1(x, idx)
 		conv3d = self.conv3d(h)
-		bn_conv3d = self.bn2(x, idx)
+		bn_conv3d = self.bn2(conv3d, idx)
 		return bn_x + bn_conv3d + self.bias
 
 class Unpool3D(nn.Module):
